@@ -13,6 +13,8 @@
 		8105B0681E3FC21800D41CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8105B0661E3FC21800D41CE5 /* Main.storyboard */; };
 		8105B06A1E3FC21800D41CE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8105B0691E3FC21800D41CE5 /* Assets.xcassets */; };
 		8105B06D1E3FC21800D41CE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8105B06B1E3FC21800D41CE5 /* LaunchScreen.storyboard */; };
+		8105B0771E3FDE6B00D41CE5 /* YBSortVisualizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8105B0761E3FDE6B00D41CE5 /* YBSortVisualizationView.m */; };
+		8105B07A1E3FE2DC00D41CE5 /* YBCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		8105B0691E3FC21800D41CE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8105B06C1E3FC21800D41CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8105B06E1E3FC21800D41CE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8105B0751E3FDE6B00D41CE5 /* YBSortVisualizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSortVisualizationView.h; sourceTree = "<group>"; };
+		8105B0761E3FDE6B00D41CE5 /* YBSortVisualizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSortVisualizationView.m; sourceTree = "<group>"; };
+		8105B0781E3FE2DC00D41CE5 /* YBCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBCircleView.h; sourceTree = "<group>"; };
+		8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBCircleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		8105B05C1E3FC21800D41CE5 /* YBSortVisualizer */ = {
 			isa = PBXGroup;
 			children = (
+				8105B0741E3FDE1C00D41CE5 /* Views */,
 				8105B0601E3FC21800D41CE5 /* AppDelegate.h */,
 				8105B0611E3FC21800D41CE5 /* AppDelegate.m */,
 				8105B0631E3FC21800D41CE5 /* YBMainViewController.h */,
@@ -77,6 +84,17 @@
 				8105B05E1E3FC21800D41CE5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8105B0741E3FDE1C00D41CE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8105B0751E3FDE6B00D41CE5 /* YBSortVisualizationView.h */,
+				8105B0761E3FDE6B00D41CE5 /* YBSortVisualizationView.m */,
+				8105B0781E3FE2DC00D41CE5 /* YBCircleView.h */,
+				8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +169,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8105B0771E3FDE6B00D41CE5 /* YBSortVisualizationView.m in Sources */,
 				8105B0651E3FC21800D41CE5 /* YBMainViewController.m in Sources */,
+				8105B07A1E3FE2DC00D41CE5 /* YBCircleView.m in Sources */,
 				8105B0621E3FC21800D41CE5 /* AppDelegate.m in Sources */,
 				8105B05F1E3FC21800D41CE5 /* main.m in Sources */,
 			);

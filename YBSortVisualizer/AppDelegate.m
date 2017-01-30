@@ -20,7 +20,9 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [self.window setRootViewController:[YBMainViewController new]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    YBMainViewController *mainViewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([YBMainViewController class])];
+    [self.window setRootViewController:mainViewController];
     
     [self.window makeKeyAndVisible];
     
