@@ -56,6 +56,14 @@
     if (_dataArray.count > 0) {
         [_sortVisualizationView reloadWithData:_dataArray];
         [self shellSort:_dataArray];
+        if (_sortVisualizationData.count > 0) {
+            for (YBShellSortStep *step in _sortVisualizationData) {
+                if (step.exchangeToIndex != step.exchangeFromIndex) {
+                    NSLog(@"%@", [step description]);
+                    [_sortVisualizationView swapElementAtIndex:step.exchangeFromIndex withElementAtIndex:step.exchangeToIndex];
+                }
+            }
+        }
     }
 }
 

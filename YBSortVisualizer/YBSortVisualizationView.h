@@ -13,6 +13,6 @@
 @interface YBSortVisualizationView : UIView
 
 - (void)reloadWithData:(NSArray *)unsortedData;
-- (void)swapElementAtIndex:(NSInteger)firstIndex withElementAtIndex:(NSInteger)secondIndex;
+- (void)swapElementAtIndex:(NSInteger)fromIndex withElementAtIndex:(NSInteger)toIndex;
 
 @end

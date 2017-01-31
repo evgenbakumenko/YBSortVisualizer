@@ -10,4 +10,6 @@
 
 @interface YBCircleView : UIView
 
+- (id)initWithFrame:(CGRect)frame value:(NSInteger)value;
+
 @end
