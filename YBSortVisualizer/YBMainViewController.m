@@ -9,10 +9,12 @@
 
 #import "YBMainViewController.h"
 #import "YBSortVisualizationView.h"
+#import "YBShellSortStep.h"
 
 @interface YBMainViewController ()
 
 @property (copy) NSMutableArray *dataArray;
+@property (copy) NSMutableArray *sortVisualizationData;
 @property (strong, nonatomic) IBOutlet UILabel *addValuesLabel;
 @property (strong, nonatomic) IBOutlet UITextField *inputValuesTextField;
 @property (strong, nonatomic) IBOutlet YBSortVisualizationView *sortVisualizationView;
@@ -53,6 +55,7 @@
 - (IBAction)visualizeSortButtonClicked:(id)sender{
     if (_dataArray.count > 0) {
         [_sortVisualizationView reloadWithData:_dataArray];
+        [self shellSort:_dataArray];
     }
 }
 
@@ -69,5 +72,41 @@ static bool TextIsNumberValue( NSString *validationText)
     isValid = [alphaNums isSupersetOfSet:inStringSet];
     return isValid;
 }
+
+#pragma mark - Sorting
+
+- (NSMutableArray *)shellSort:(NSMutableArray *)arrayToSort
+{
+    if (!_sortVisualizationData){
+        _sortVisualizationData = [NSMutableArray array];
+    }
+    else {
+        [_sortVisualizationData removeAllObjects];
+    }
+    NSUInteger count = [arrayToSort count];
+    
+    for (NSInteger i = count / 2; i > 0; i = i / 2) {
+        for (NSInteger j = i; j < count; j++) {
+            for (NSInteger k = j - i; k >= 0; k = k - i) {
+                YBShellSortStep *sortStep = [[YBShellSortStep alloc] initWithIndexOfI:i indexOfJ:j indexOfK:k];
+                
+                NSLog(@"k index = %ld, j index = %ld, i index = %ld", k, j, i);
+                if ([arrayToSort[k + 1] floatValue] >= [arrayToSort[k] floatValue]) {
+                    break;
+                }
+                else {
+                    [arrayToSort exchangeObjectAtIndex:k withObjectAtIndex:(k + i)];
+                    [sortStep setExchangeFromIndex:k andExchangeToIndex:(k + i)];
+                    NSLog(@"Exchange object at %ld with object at %ld", k, (k + i));
+                }
+                
+                [_sortVisualizationData addObject:sortStep];
+            }
+        }
+    }
+    
+    return arrayToSort;
+}
+
 
 @end
