@@ -16,6 +16,7 @@
 		8105B0771E3FDE6B00D41CE5 /* YBSortVisualizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8105B0761E3FDE6B00D41CE5 /* YBSortVisualizationView.m */; };
 		8105B07A1E3FE2DC00D41CE5 /* YBCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */; };
 		8161CB681E408F0E00A3A65B /* YBShellSortStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 8161CB671E408F0E00A3A65B /* YBShellSortStep.m */; };
+		8161CB6B1E40D30E00A3A65B /* YBIndexIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8161CB6A1E40D30E00A3A65B /* YBIndexIndicatorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBCircleView.m; sourceTree = "<group>"; };
 		8161CB661E408F0E00A3A65B /* YBShellSortStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBShellSortStep.h; sourceTree = "<group>"; };
 		8161CB671E408F0E00A3A65B /* YBShellSortStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBShellSortStep.m; sourceTree = "<group>"; };
+		8161CB691E40D30E00A3A65B /* YBIndexIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIndexIndicatorView.h; sourceTree = "<group>"; };
+		8161CB6A1E40D30E00A3A65B /* YBIndexIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIndexIndicatorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				8105B0761E3FDE6B00D41CE5 /* YBSortVisualizationView.m */,
 				8105B0781E3FE2DC00D41CE5 /* YBCircleView.h */,
 				8105B0791E3FE2DC00D41CE5 /* YBCircleView.m */,
+				8161CB691E40D30E00A3A65B /* YBIndexIndicatorView.h */,
+				8161CB6A1E40D30E00A3A65B /* YBIndexIndicatorView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8161CB6B1E40D30E00A3A65B /* YBIndexIndicatorView.m in Sources */,
 				8105B0771E3FDE6B00D41CE5 /* YBSortVisualizationView.m in Sources */,
 				8105B0651E3FC21800D41CE5 /* YBMainViewController.m in Sources */,
 				8105B07A1E3FE2DC00D41CE5 /* YBCircleView.m in Sources */,

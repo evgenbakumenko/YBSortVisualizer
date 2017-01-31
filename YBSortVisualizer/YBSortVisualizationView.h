@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YBShellSortStep.h"
 
-#define kMaxValuesInUnsortedArray 10
+static NSInteger kMaxValuesInUnsortedArray =  9;
 
 @interface YBSortVisualizationView : UIView
 
 - (void)reloadWithData:(NSArray *)unsortedData;
-- (void)swapElementAtIndex:(NSInteger)fromIndex withElementAtIndex:(NSInteger)toIndex;
+- (void)swapElementWithSortStep:(YBShellSortStep *)step;
 
 @end

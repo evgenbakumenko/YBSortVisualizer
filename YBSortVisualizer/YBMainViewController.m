@@ -11,6 +11,8 @@
 #import "YBSortVisualizationView.h"
 #import "YBShellSortStep.h"
 
+static NSInteger kRandomIntegersMaxValue = 200;
+
 @interface YBMainViewController ()
 
 @property (copy) NSMutableArray *dataArray;
@@ -36,7 +38,13 @@
 }
 
 - (void)setupView{
-    _addValuesLabel.text = [NSString stringWithFormat:@"Add up to %d integers to start", kMaxValuesInUnsortedArray];
+    _addValuesLabel.text = [NSString stringWithFormat:@"Add %ld integers to start", kMaxValuesInUnsortedArray];
+}
+
+- (void)resetData{
+    [_dataArray removeAllObjects];
+    [_sortVisualizationData removeAllObjects];
+    [_sortVisualizationView reloadWithData:nil];
 }
 
 #pragma mark - Actions
@@ -46,10 +54,32 @@
         _dataArray = [NSMutableArray array];
     }
     
-    if (_inputValuesTextField.text.length > 0 && TextIsNumberValue(_inputValuesTextField.text)) {
-        [_dataArray addObject:@([_inputValuesTextField.text integerValue])];
-        _inputValuesTextField.text = nil;
+    NSString *inputText = _inputValuesTextField.text;
+    
+    if (_dataArray.count >= kMaxValuesInUnsortedArray) {
+        [self showAlertWithMessage:@"Array already has maximum elements. \nGo sort :)"];
+        return;
     }
+    
+    if (inputText.length > 0 && TextIsNumberValue(inputText)) {
+        [_dataArray addObject:@([inputText integerValue])];
+        [_sortVisualizationView reloadWithData:_dataArray];
+        _inputValuesTextField.text = nil;
+    } else {
+        [self showAlertWithMessage:@"Please enter valid integer"];
+    }
+}
+
+- (IBAction)addRandomValuesButtonClicked:(id)sender {
+    if(!_dataArray){
+        _dataArray = [NSMutableArray array];
+    }
+    [self resetData];
+    
+    for (int index = 0; index < kMaxValuesInUnsortedArray; index++) {
+        [_dataArray addObject:@(arc4random() % kRandomIntegersMaxValue)];
+    }
+    [_sortVisualizationView reloadWithData:_dataArray];
 }
 
 - (IBAction)visualizeSortButtonClicked:(id)sender{
@@ -58,21 +88,20 @@
         [self shellSort:_dataArray];
         if (_sortVisualizationData.count > 0) {
             for (YBShellSortStep *step in _sortVisualizationData) {
-                if (step.exchangeToIndex != step.exchangeFromIndex) {
-                    NSLog(@"%@", [step description]);
-                    [_sortVisualizationView swapElementAtIndex:step.exchangeFromIndex withElementAtIndex:step.exchangeToIndex];
-                }
+                NSLog(@"%@", [step description]);
+                [_sortVisualizationView swapElementWithSortStep:step];
             }
         }
     }
 }
 
-#pragma mark - Visualization
-
+- (IBAction)resetButtonClicked:(id)sender{
+    [self resetData];
+}
 
 #pragma mark - Validation
 
-static bool TextIsNumberValue( NSString *validationText)
+static bool TextIsNumberValue(NSString *validationText)
 {
     BOOL isValid;
     NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
@@ -100,9 +129,9 @@ static bool TextIsNumberValue( NSString *validationText)
                 
                 NSLog(@"k index = %ld, j index = %ld, i index = %ld", k, j, i);
                 if ([arrayToSort[k + 1] floatValue] >= [arrayToSort[k] floatValue]) {
+                    [_sortVisualizationData addObject:sortStep];
                     break;
-                }
-                else {
+                } else {
                     [arrayToSort exchangeObjectAtIndex:k withObjectAtIndex:(k + i)];
                     [sortStep setExchangeFromIndex:k andExchangeToIndex:(k + i)];
                     NSLog(@"Exchange object at %ld with object at %ld", k, (k + i));
@@ -114,6 +143,16 @@ static bool TextIsNumberValue( NSString *validationText)
     }
     
     return arrayToSort;
+}
+
+#pragma mark - Alerts
+
+- (void)showAlertWithMessage:(NSString *)message{
+    if (message.length > 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 
